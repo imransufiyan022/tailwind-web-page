@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Introduction to Tailwind CSS</title>
+</head>
+<body class="min-h-screen bg-gray-400 flex justify-center items-center p-6">
+ <!-- Tailwind CSS with CDN
+1. What is Tailwind CSS?
+Tailwind CSS is a CSS framework that provides ready-made classes called utility classes.
+
+Instead of writing this CSS:
+.heading {
+  color: blue;
+  font-size: 36px;
+  text-align: center;
+}
+<h1 class="heading">Welcome</h1>  -->
+
+ <!-- We can write:  -->
+<!-- <h1 class="text-center text-4xl text-blue-600">
+  Welcome
+</h1> -->
+
+<!-- Each class performs a specific styling job:
+text-center centres the text.
+text-4xl increases the font size.
+text-blue-600 changes the text colour. -->
+
+<!-- This approach is called utility-first styling.  -->
+
+ <!-- ----------------- -->
+<!-- 2. Connecting Tailwind CSS with CDN
+
+Create an index.html file and add the Tailwind CDN script inside the <head>:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <title>Introduction to Tailwind CSS</title>
+</head>
+
+<body>
+  <h1 class="text-4xl font-bold text-blue-600">
+    Hello, Tailwind CSS!
+  </h1>
+</body>
+</html>  -->
+<!-- 
+The following line connects Tailwind CSS to the webpage:
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+After adding it, Tailwind utility classes can be used inside the HTML file.
+
+The Tailwind Play CDN is suitable for learning and development, but it is not intended for production websites.  -->
+
+
+
+<!-- 
+3. Class Task: Create a Simple Profile Box
+Using HTML and Tailwind CSS, create a simple profile box.
+
+Requirements
+Your webpage should contain:
+
+A centred box with a white background.
+A light-grey background on the body.
+A heading displaying your name.
+A paragraph displaying Frontend Web Development Student.
+Another short paragraph introducing yourself.
+A button displaying View Profile. -->
+
+
+<div class="w-full max-w-sm bg-white py-2 px-8 rounded-lg shadow-xl">
+    <h1 class="text-center text-[3rem] text-green-400 text-shadow-lg mb-3">Tailwind CSS</h1>
+
+    <p class="leading-6 text-blue-500 text-lg text-justify mb-3 italic capitalize font-serif">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas expedita voluptates nobis, cum nulla odio praesentium quam assumenda eos quos dolore aliquid repellat facilis minima officia ducimus animi dicta soluta. Dignissimos sunt repellendus totam. Aliquam eaque similique deserunt in.</p>
+
+    <p class="[word-spacing:0.5rem] font-[Arial, Helvetica, sans-serif] text-lg text-pink-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias impedit corporis modi aspernatur amet architecto culpa distinctio eos, repudiandae rerum nemo est asperiores minus dolor provident at facilis odit libero velit cumque suscipit. Blanditiis quae nemo ad repellendus vitae. Expedita illo totam natus at eius et, provident asperiores? Minima voluptatibus adipisci impedit est fugiat ducimus ab sequi, numquam excepturi eius.</p>
+
+   <div class="flex justify-center items-center mt-4">
+     <button class="px-12 py-3 bg-purple-400 text-white hover:cursor-pointer hover:bg-purple-600 rounded-xl" type="submit">View Profile</button>
+   </div>
+
+</div>
+<!-- 
+4. DIFFERENCES BETWEEN EXTERNAL CSS AND TAILWIND CSS
+-------------------------------------------------------------------------
+| External CSS                           | Tailwind CSS                 |
+|----------------------------------------|------------------------------|
+| Styles are written in a separate CSS file | Utility classes are written in HTML |
+| You create class names such as `.box`     | Tailwind provides classes such as `p-6` |
+| You write complete CSS declarations       | You combine several small utilities |
+| You write media queries manually | You use responsive prefixes |
+| You write pseudo-classes separately | You use prefixes such as `hover:` |
+| Exact values can be written directly | Use the Tailwind scale or arbitrary values |
+| HTML is usually shorter | HTML contains more classes |
+| CSS files may grow as the project grows | Tailwind reuses the same utility classes | -->
+
+
+5. THE DIVIDE-BY-FOUR RULE:
+Tailwind’s default spacing unit is generally:
+1 Tailwind unit = 0.25rem = 4px
+
+Therefore, for many spacing and fixed-size values:
+Tailwind number = CSS pixel value ÷ 4
+EXAMPLE: 
+padding: 24px becomes p-6
+
+----------------------------------------------------------
+| Pixels in external CSS | Divide by 4 | Tailwind number |
+|------------------------|------------:|-----------------|
+| `4px`                  | 4 ÷ 4       | `1` |
+| `8px`                  | 8 ÷ 4       | `2` |
+| `12px`                 | 12 ÷ 4      | `3` |
+| `16px`                 | 16 ÷ 4      | `4` |
+| `20px`                 | 20 ÷ 4      | `5` |
+| `24px`                 | 24 ÷ 4      | `6` |
+| `32px`                 | 32 ÷ 4      | `8` |
+| `40px`                 | 40 ÷ 4      | `10` |
+| `48px`                 | 48 ÷ 4      | `12` |
+| `64px`                 | 64 ÷ 4      | `16` |
+| `80px`                 | 80 ÷ 4      | `20` |
+| `96px`                 | 96 ÷ 4      | `24` |
+| `256px`                | 256 ÷ 4     | `64` |
+----------------------------------------------------------
+
+6. PADDING UTILITIES
+| External CSS        | Tailwind        |
+|---------------------|-----------------|
+| `padding: 16px;`    | `p-4`           |
+| `padding: 20px;`    | `p-5`.          |
+| `padding: 24px;`    | `p-6`           |
+| `padding-top: 16px;` | `pt-4`         |
+| `padding-bottom: 16px;` | `pb-4`      |
+| `padding-left: 16px;` | `pl-4`        |
+| `padding-right: 16px;` | `pr-4`       |
+| `padding: 16px 24px;` | `py-4 px-6`.  |
+
+- p means padding on every side.
+- px means padding on the left and right.
+- py means padding on the top and bottom.
+- pt, pr, pb and pl target individual sides.
+
+7. MARGIN UTILITIES
+| External CSS           | Tailwind       |
+|------------------------|----------------|
+| `margin: 16px;`        | `m-4`          |
+| `margin-top: 24px;`    | `mt-6`         |
+| `margin-bottom: 20px;` | `mb-5`         |
+| `margin-left: 8px;`.   | `ml-2`         |
+| `margin-right: 8px;`   | `mr-2`         |
+| `margin: 16px 24px;`.  | `my-4 mx-6`    |
+| `margin: 0 auto;`      | `mx-auto`      |
+
+
+IMPORTANT: Horizontal Centring with mx-auto
+The Tailwind utility:
+mx-auto
+
+adds automatic margins to the left and right sides of an element.
+It is equivalent to:
+margin-left: auto;
+margin-right: auto;
+
+For mx-auto to visibly centre an element, the element must usually have a width or maximum width smaller than its parent.
+<div class="w-3/4 mx-auto bg-blue-200 p-6">
+  Horizontally centred box
+</div>
+
+A common responsive page-container pattern is:
+<main class="w-full max-w-6xl mx-auto">
+  Page content
+</main>
+
+Here:
+- w-full allows the container to use the available width.
+- max-w-6xl limits how wide it can become.
+- mx-auto centres it horizontally when extra space is available.
+For responsive designs, combine it with body padding:
+<body class="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-10">
+
+  <main class="w-full max-w-6xl mx-auto">
+    Page content
+  </main>
+
+</body>
+
+The body padding protects the content from touching the screen edges, while mx-auto centres the main container on wider screens.
+
+------------------------------
+
+8. GAP UTILITIES
+| External CSS   | Tailwind |
+|---------------------|------------|
+| `gap: 8px;`         | `gap-2`.   |
+| `gap: 12px;`        | `gap-3`    |
+| `gap: 16px;`        | `gap-4`    |
+| `gap: 24px;`        | `gap-6`    |
+| `column-gap: 16px;` | `gap-x-4`  |
+| `row-gap: 24px;`    | `gap-y-6`  |
+
+
+9. WIDTH AND HEIGHT CONVERSION
+| External CSS                | Tailwind         |
+|-----------------------------|------------------|
+| `width: 24px;`              | `w-6`            |
+| `height: 20px;`.            | `h-5`            |
+| `width: 36px; height: 36px;`| `size-9`         |
+| `width: 64px;`.             | `w-16`           |
+| `width: 256px;`             | `w-64`           |
+| `width: 100%;`              | `w-full`         |
+| `height: auto;`             | `h-auto`         |
+| `min-height: 100vh;`        | `min-h-screen`   |
+
+
+IMPORTANT: 
+Compared with other fractional widths
+Tailwind utility	Percentage width
+w-1/2	                50%
+w-2/3	                66.67%
+w-3/4	                75%
+w-4/5	                80%
+w-5/6	                83.33%
+w-11/12	                91.67%
+w-full	                100%
+
+A useful responsive container could be written as:
+<div class="w-11/12 max-w-6xl mx-auto">
+  Page content
+</div>
+
+Here:
+- w-11/12 gives the container approximately 91.67% width.
+- max-w-6xl prevents it from becoming excessively wide.
+- mx-auto centres it horizontally.
+
+-----------------------------------
+CREATING RESPONSIVE IMAGES IN TAILWIND CSS
+A responsive image should:
+- Fit inside its parent container.
+- Avoid overflowing the screen.
+- Maintain its correct proportions.
+- Adjust appropriately to different screen widths.
+- Avoid becoming stretched or distorted.
+Tailwind’s base styles already give images max-width: 100% and height: auto, which prevents most images from overflowing their containers. 
+
+Tailwind CSS
+However, we should still apply suitable utilities depending on how the image will be used.
+A. Basic responsive image
+The simplest responsive image pattern is:
+<img
+  class="block h-auto w-full"
+  src="./images/product.jpg"
+  alt="Wireless headphones"
+>
+
+Meaning
+---------------------------------------------------------
+Utility	 |   Meaning                                    |
+---------------------------------------------------------
+block	 |  Displays the image as a block element       |
+w-full	 |  Makes it occupy 100% of its parent’s width  |
+h-auto	 |  Calculates the height automatically         |
+alt	     |  Describes the image for accessibility       |
+---------------------------------------------------------
+
+External CSS equivalent:
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+This pattern shows the entire image without changing its natural proportions.
+
+B. Place the image inside a responsive container
+The image responds to the width of its parent. Therefore, the parent container must also be responsive.
+<div class="w-full max-w-sm">
+  <img
+    class="block h-auto w-full rounded-lg"
+    src="./images/product.jpg"
+    alt="Wireless headphones"
+  >
+</div>
+
+Here:
+- w-full allows the container to shrink on small screens.
+- max-w-sm prevents it from becoming excessively wide.
+- The image occupies the full width of that container.
+
+
+C. h-auto versus a fixed height
+Use h-auto to show the entire image
+<img
+  class="h-auto w-full"
+  src="./images/product.jpg"
+  alt="Product"
+>
+
+This is suitable when:
+- The complete image must remain visible.
+- The original image proportions should be preserved.
+- All images have similar natural dimensions.
+
+
+Use a fixed height with object-cover
+<img
+  class="h-64 w-full object-cover"
+  src="./images/product.jpg"
+  alt="Product"
+>
+
+This is suitable when:
+- Several card images must have the same height.
+- The image needs to fill a defined area.
+- Some cropping is acceptable.
+The object-cover utility makes the image fill its container while preserving its proportions. Parts of the image may be cropped. Tailwind CSS
+
+
+D. Understanding object-cover
+<img class="h-64 w-full object-cover">
+
+External CSS equivalent:
+img {
+  width: 100%;
+  height: 256px;
+  object-fit: cover;
+}
+
+Without object-cover, forcing both width and height can stretch the image.
+
+Incorrect:
+<img class="h-64 w-full">
+
+The browser may force the image into the given dimensions.
+Better:
+<img class="h-64 w-full object-cover">
+
+The image keeps its proportions and crops any part that does not fit.
+
+
+E. Understanding object-contain
+<img
+  class="h-64 w-full object-contain"
+  src="./images/product.png"
+  alt="Product"
+>
+
+object-contain makes the entire image visible inside the specified area.
+External CSS equivalent:
+img {
+  width: 100%;
+  height: 256px;
+  object-fit: contain;
+}
+
+It may leave empty space around the image.
+
+---------------------------------------------------------------------------
+| Utility         | Result                       | Best used for          |
+|-----------------|------------------------------|------------------------|
+| `object-cover`  | Fills the area but may crop  | Product cards, profile pictures and hero images |
+| `object-contain`| Displays the complete image but may leave space | Logos, icons and product cut-outs |
+| `object-fill` | Stretches the image to fill the area | Usually avoid for photographs |
+| `object-scale-down` | Keeps the original size or reduces it | Images that should not be enlarged |
+---------------------------------------------------------------------------
+
+
+F. Use aspect ratio for consistent images
+An aspect ratio describes the relationship between an image’s width and height.
+Square image
+<img
+  class="aspect-square w-full object-cover"
+  src="./images/product.jpg"
+  alt="Product"
+>
+
+aspect-square means:
+aspect-ratio: 1 / 1;
+
+The width and height are equal.
+Landscape image
+<img
+  class="aspect-3/2 w-full object-cover"
+  src="./images/product.jpg"
+  alt="Product"
+>
+
+Video-shaped image
+<img
+  class="aspect-video w-full object-cover"
+  src="./images/banner.jpg"
+  alt="Banner"
+>
+
+aspect-video uses a 16 / 9 ratio. Tailwind provides aspect-square, aspect-video and other ratio utilities. Tailwind CSS
+Using an aspect ratio is often better than giving an image an arbitrary fixed height because it scales proportionally with its width.
+
+G. Rounded responsive images
+<img
+  class="block h-auto w-full rounded-xl"
+  src="./images/product.jpg"
+  alt="Product"
+>
+
+If the image is inside a card and must follow the card’s rounded corners:
+<article class="overflow-hidden rounded-xl bg-white shadow-lg">
+
+  <img
+    class="aspect-3/2 w-full object-cover"
+    src="./images/product.jpg"
+    alt="Product"
+  >
+
+  <div class="p-6">
+    Product information
+  </div>
+
+</article>
+
+- rounded-xl rounds the card.
+- overflow-hidden clips the image to the card’s rounded corners.
+H. Responsive image sizes at breakpoints
+You can change an image’s dimensions at different breakpoints:
+<img
+  class="
+    h-48
+    w-full
+    object-cover
+    sm:h-56
+    md:h-64
+    lg:h-80
+  "
+  src="./images/product.jpg"
+  alt="Product"
+>
+
+This means:
+------------------------------------
+| Screen width     | Image height |
+|------------------|--------------|
+| Mobile           | `h-48` = 192px |
+| From 640px       | `h-56` = 224px |
+| From 768px       | `h-64` = 256px |
+| From 1024px.     | `h-80` = 320px |
+-------------------------------------
+
+-----------------------------------------------
+| Screen width   | Applied class | Image height |
+|----------------|---------------|------------:|
+| Below 640px    | `h-48`        | 192px |
+| From 640px     | `sm:h-56`     | 224px |
+| From 768px     | `md:h-64`     | 256px |
+| From 1024px    | `lg:h-80`     | 320px |
+-----------------------------------------------
+
+BEST TAILWIND IMAGE PATTERNS
+Show the entire image naturally
+<img class="block h-auto w-full">
+
+Create equal card images
+<img class="aspect-4/3 w-full object-cover">
+
+Create a square image
+<img class="aspect-square w-full object-cover">
+
+Create a circular avatar
+<img class="size-24 rounded-full object-cover">
+
+Display a complete logo
+<img class="h-auto w-32 object-contain">
+
+Create a hero image
+<img class="h-64 w-full object-cover md:h-96">
+
+Clip an image to its card
+<div class="overflow-hidden rounded-xl">
+  <img class="h-auto w-full">
+</div>
+
+
+--------
+PREVENTING IMAGE OVERFLOW
+Place the image inside a constrained container:
+<div class="mx-auto w-full max-w-4xl px-4">
+
+  <img
+    class="h-auto w-full rounded-xl"
+    src="./images/banner.jpg"
+    alt="Banner"
+  >
+
+</div>
+
+- w-full makes the container responsive.
+- max-w-4xl limits its maximum width.
+- mx-auto centres the container.
+- px-4 gives it horizontal spacing.
+- The image fits the container.
+
+
+
+
+--------------------------------------
+10. FLEXBOX UTILITIES
+---------------------------------------------------------
+| External CSS                      | Tailwind          |
+|-----------------------------------|-------------------|
+| `display: flex;`                  | `flex`            |
+| `flex-direction: column;`         | `flex-col`        |
+| `flex-direction: row;`            | `flex-row`        |
+| `justify-content: center;`        | `justify-center`  |
+| `justify-content: space-between;` | `justify-between` |
+| `align-items: center;`            | `items-center`    |
+| `flex-wrap: wrap;`                | `flex-wrap`       |
+| `flex-grow: 1;`                   | `grow`            |
+| `flex-shrink: 0;`                 | `shrink-0`        |
+---------------------------------------------------------
+
+11. BACKGROUND AND TEXT COLOR:
+EXAMPLE:
+External CSS:
+.box {
+  background-color: green;
+  color: white;
+}
+
+Tailwind:
+<div class="bg-green-500 text-white">
+    
+- Tailwind provides colour families with different shades:
+green-100
+green-200
+green-300
+green-400
+green-500
+green-600
+green-700
+green-800
+green-900
+
+The number is a colour shade, not a pixel value. Therefore, do not divide colour values by four.
+
+12. CUSTOM COLOR VALUES:
+Custom colour values
+External CSS:
+body {
+  background-color: hsl(217, 54%, 11%);
+}
+
+Tailwind arbitrary value:
+<body class="bg-[hsl(217_54%_11%)]">
+
+Or:
+<body class="bg-[#0d192b]">
+
+Tailwind supports arbitrary values inside square brackets when the required value is not on its default scale.
+
+13. COMMON FONT SIZES
+-----------------------------------
+| External CSS       | Tailwind   |
+|--------------------|------------|
+| `font-size: 12px;` | `text-xs`  |
+| `font-size: 14px;` | `text-sm`  |
+| `font-size: 16px;` | `text-base`|
+| `font-size: 18px;` | `text-lg`  |
+| `font-size: 20px;` | `text-xl`  |
+| `font-size: 24px;` | `text-2xl` |
+| `font-size: 30px;` | `text-3xl` |
+| `font-size: 36px;` | `text-4xl` |
+-----------------------------------
+
+For an exact value that is not part of the scale:
+font-size: 17px;
+
+Use:
+<p class="text-[17px]">
+
+14. FONT WEIGHT COMPARISON
+-------------------------------------------
+| External CSS        | Tailwind          |
+|---------------------|-------------------|
+| `font-weight: 100;` | `font-thin`       |
+| `font-weight: 200;` | `font-extralight` |
+| `font-weight: 300;` | `font-light`      |
+| `font-weight: 400;` | `font-normal`     |
+| `font-weight: 500;` | `font-medium`     |
+| `font-weight: 600;` | `font-semibold`   |
+| `font-weight: 700;` | `font-bold`       |
+| `font-weight: 800;` | `font-extrabold`  |
+| `font-weight: 900;` | `font-black`      |
+-------------------------------------------
+
+
+15. COMMON BORDER-RADIUS UTILITIES
+-----------------------------------------
+| External CSS          | Tailwind      |
+|-----------------------|---------------|
+| `border-radius: 2px;` | `rounded-xs`  |
+| `border-radius: 4px;` | `rounded-sm`  |
+| `border-radius: 6px;` | `rounded-md`  |
+| `border-radius: 8px;` | `rounded-lg`  |
+| `border-radius: 12px;`| `rounded-xl`  |
+| `border-radius: 16px;`| `rounded-2xl` |
+| `border-radius: 50%;` | `rounded-full`|
+-----------------------------------------
+
+
+16. For an exact custom radius:
+<div class="rounded-[10px]">
+
+17. BOX SHADOW
+External CSS:
+.box {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+Tailwind:
+<div class="shadow-lg">
+
+Common classes include:
+shadow-sm
+shadow
+shadow-md
+shadow-lg
+shadow-xl
+shadow-2xl
+shadow-none
+
+For an exact custom shadow:
+<div class="shadow-[0_10px_15px_rgba(0,0,0,0.2)]">
+Underscores represent spaces inside arbitrary Tailwind values.
+
+18. HOVER STATES
+External CSS:
+button {
+  background-color: green;
+  color: white;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+Tailwind:
+<button class="bg-green-500 text-white hover:bg-green-800">
+  Submit
+</button>
+
+Tailwind places the state before the utility:
+hover:bg-green-800
+
+Other state variants include:
+focus:border-blue-500
+active:scale-95
+disabled:opacity-50
+
+
+19. RESPONSIVE DESIGN
+External CSS:
+.box {
+  padding: 16px;
+}
+
+@media (min-width: 640px) {
+  .box {
+    padding: 24px;
+  }
+}
+
+Tailwind:
+<div class="p-4 sm:p-6">
+
+This means:
+- p-4: apply 16px padding by default.
+- sm:p-6: apply 24px padding from 640px upwards.
+Another example:
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+}
+
+Tailwind:
+<div class="flex flex-col md:flex-row">
+
+
+----------------------------------------
+20. TAILWIND CSS BREAKPOINTS
+What is a breakpoint?
+A breakpoint is a specified screen width at which a webpage changes its layout or styling.
+For example:
+- Cards may appear in one column on a phone.
+- They may appear in two columns on a tablet.
+- They may appear in four columns on a desktop.
+In external CSS, we create breakpoints with media queries:
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+In Tailwind CSS, we use responsive prefixes:
+<div class="grid grid-cols-1 md:grid-cols-2">
+
+    DEFAULT TAILWIND BREAKPOINTS
+---------------------------------------------------------
+| Prefix | Minimum width | CSS equivalent               |
+|--------|--------------:|------------------------------|
+| `sm:` | 640px          | `@media (min-width: 640px)`  |
+| `md:` | 768px          | `@media (min-width: 768px)`  |
+| `lg:` | 1024px         | `@media (min-width: 1024px)` |
+| `xl:` | 1280px         | `@media (min-width: 1280px)` |
+| `2xl:` | 1536px        | `@media (min-width: 1536px)` |
+---------------------------------------------------------
+
+Tailwind does not have a default xs: breakpoint. Styles for screens below 640px are written without a breakpoint prefix.
+
+
+21. TAILWIND IS MOBILE-FIRST
+Tailwind uses a mobile-first breakpoint system. This means:
+1. Write the mobile style without a prefix.
+2. Use sm:, md:, lg: and other prefixes to change the design as the screen becomes wider.
+
+Example:
+<h1 class="text-xl md:text-3xl lg:text-5xl">
+  Responsive heading
+</h1>
+
+This means:
+----------------------------------------
+| Screen width     | Applied font size |
+|------------------|-------------------|
+| Below 768px      | `text-xl`         |
+| 768px and above  | `text-3xl`        |
+| 1024px and above | `text-5xl`        |
+----------------------------------------
+
+The browser reads it like this:
+h1 {
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 48px;
+  }
+}
+
+
+22. UNDERSTANDING sm:
+A common mistake is to think that sm: means “small mobile screens.”
+It actually means:
+Apply the utility when the screen width is at least 640px.
+
+Consider:
+<p class="text-red-500 sm:text-blue-500">
+  Responsive text
+</p>
+
+- Below 640px: the text is red.
+- At 640px and above: the text becomes blue.
+Therefore, use the unprefixed class for the smallest screens:
+<div class="p-4 sm:p-6">
+
+- Mobile: p-4
+- From 640px upwards: p-6
+
+
+23. BREAKPOINTS CONTINUE UPWARDS
+A responsive utility does not stop automatically at the next breakpoint.
+<div class="bg-red-500 md:bg-blue-500">
+
+This means:
+- Below 768px: red
+- From 768px upwards: blue
+The md:bg-blue-500 style continues through lg, xl and 2xl unless another class overrides it.
+<div class="bg-red-500 md:bg-blue-500 lg:bg-green-500">
+
+This gives:
+- Below 768px: red
+- From 768px: blue
+- From 1024px: green
+
+24. RESPONSIVE PADDING:
+<section class="p-4 sm:p-6 md:p-8 lg:p-12">
+  Content
+</section>
+-------------------------------------
+| Screen width     | Padding        |
+|------------------|----------------|
+| Below 640px      | `p-4` = 16px   |
+| 640px and above  | `p-6` = 24px   |
+| 768px and above  | `p-8` = 32px   |
+| 1024px and above | `p-12` = 48px  |
+-------------------------------------
+
+You do not need to repeat the property at every breakpoint unless the value needs to change.
+This is also valid:
+<section class="p-4 lg:p-12">
+
+The padding remains p-4 until the screen reaches 1024px.
+
+25. RESPONSIVE WIDTH
+Responsive width
+<div class="w-full md:w-3/4 lg:w-1/2">
+  Responsive box
+</div>
+
+This means:
+- Mobile: full width
+- Tablet: three-quarters width
+- Laptop: half width
+For a card, this is often enough:
+<div class="w-full max-w-sm">
+  Card
+</div>
+
+The card shrinks on narrow screens but stops growing when it reaches the max-w-sm value.
+
+
+26. RESPONSIVE FLEXBOX
+Vertical to horizontal
+<div class="flex flex-col gap-4 md:flex-row">
+  <div>Image</div>
+  <div>Product information</div>
+</div>
+
+This means:
+- Below 768px: children are arranged vertically.
+- From 768px: children are arranged horizontally.
+External CSS equivalent:
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+}
+
+Responsive alignment
+<div
+  class="
+    flex
+    flex-col
+    items-start
+    gap-4
+    md:flex-row
+    md:items-center
+    md:justify-between
+  "
+>
+  <h2>Logo</h2>
+  <button>Sign In</button>
+</div>
+
+On mobile, the elements are vertical and left-aligned. From 768px, they appear horizontally with space between them.
+
+
+27. RESPONSIVE GRID
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <div>Card One</div>
+  <div>Card Two</div>
+  <div>Card Three</div>
+  <div>Card Four</div>
+</div>
+
+External CSS equivalent:
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+28. SHOWING AND HIDING ELEMENTS
+Mobile menu button
+<button class="block md:hidden">
+  Menu
+</button>
+
+- Displayed below 768px.
+- Hidden from 768px upwards.
+Desktop navigation
+<ul class="hidden md:flex">
+  <li>Home</li>
+  <li>About</li>
+  <li>Contact</li>
+</ul>
+
+- Hidden below 768px.
+- Displayed as a Flexbox container from 768px upwards.
+The two can be combined:
+<nav class="flex items-center justify-between">
+
+  <h2>CodeSpace</h2>
+
+  <button class="block md:hidden">
+    Menu
+  </button>
+
+  <ul class="hidden gap-6 md:flex">
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+
+</nav>
+
+
+29. MOBILE-FIRST VERSUS DESKTOP-FIRST
+Your students have used external CSS media queries such as:
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+}
+
+This is a desktop-first approach because the original styles are changed when the screen becomes smaller.
+Tailwind normally works in the opposite direction:
+<div class="w-[90%] md:w-3/4 lg:w-1/2">
+
+Start with mobile and make changes as the screen becomes wider.
+Comparison
+External CSS with max-width
+.container {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+
+Mobile-first Tailwind
+<div class="w-[90%] md:w-1/2">
+
+Read it as:
+- Start with 90% width.
+- Change to 50% width from 768px upwards.
+
+
+30. BREAKPOINTS ARE WIDTHS, NOT DEVICES
+Although we often describe md: as “tablet” and lg: as “laptop,” Tailwind does not detect the type of device.
+It only checks the viewport width.
+For example:
+<div class="md:flex">
+
+means:
+Apply display: flex whenever the viewport is at least 768px wide.
+
+It does not mean:
+Apply Flexbox only when the user is using a tablet.
+
+A large phone in landscape mode could also reach a breakpoint.
+
+
+31. TARGETING ONLY A PARTICULAR BREAKPOINT RANGE
+Targeting only a particular breakpoint range
+Because Tailwind breakpoints work upwards, this:
+<div class="md:bg-blue-500">
+
+applies from md through larger screens.
+To apply a style only between md and lg, combine md: with max-lg::
+<div class="md:max-lg:bg-blue-500">
+
+This targets:
+768px up to, but not including, 1024px
+
+For beginners, focus first on the standard mobile-first prefixes before using breakpoint ranges.
+
+</body>
+</html>
